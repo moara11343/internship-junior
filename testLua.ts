@@ -71,6 +71,7 @@ async function main() {
   -- data[3] => x point 1
   -- data[4] => y point 1
 
+  
   for i=1,#data,2 do
     x = tonumber(data[i]) 
     y = tonumber(data[i+1]) 
