@@ -1,5 +1,5 @@
 import IORedis from 'ioredis';
-import LuaParams from '../redis-graph/LuaParams';
+import LuaParams from './LuaParams';
   
   let redis: IORedis.Redis;
   const commandName = 'grp';

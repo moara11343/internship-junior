@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const LuaParams_1 = require("../redis-graph/LuaParams");
+const LuaParams_1 = require("./LuaParams");
 let redis;
 const commandName = 'grp';
 const lua = ` 
