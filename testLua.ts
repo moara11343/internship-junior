@@ -1,5 +1,6 @@
 import IORedis from "ioredis";
 import LuaParams from "./LuaParams";
+import 'core-js/es/object/from-entries';
 
 // import loadmpoint, * from '../redis-graph/loadmpoint';
 

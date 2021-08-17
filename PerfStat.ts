@@ -1,5 +1,5 @@
 import IORedis from 'ioredis';
-import LuaParams from '../redis-graph/LuaParams';
+import LuaParams from './LuaParams';
 
 export type PerfSource = 'redis' | 'db';
 

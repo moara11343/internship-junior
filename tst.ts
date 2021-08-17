@@ -1,49 +1,49 @@
 import IORedis from 'ioredis';
-import LuaParams from '../redis-graph/LuaParams';
+import LuaParams from './LuaParams';
   
-  let redis: IORedis.Redis;
-  const commandName = 'grp';
+//   let redis: IORedis.Redis;
+//   const commandName = 'grp';
   
-  const lua = ` 
-  -- redis.call('set', KEYS[1], ARGV[3])
-  -- redis.call('sadd', KEYS[1], ARGV[1])
-  -- redis.call('sadd', KEYS[1], 'aß')
-  -- redis.call('expire', KEYS[1], ARGV[2])
-  -- local members = redis.call('get', KEYS[1])
-  local members = redis.call('set', KEYS[1], ARGV[1])
-  redis.call('KEYS','*')
+//   const lua = ` 
+//   -- redis.call('set', KEYS[1], ARGV[3])
+//   -- redis.call('sadd', KEYS[1], ARGV[1])
+//   -- redis.call('sadd', KEYS[1], 'aß')
+//   -- redis.call('expire', KEYS[1], ARGV[2])
+//   -- local members = redis.call('get', KEYS[1])
+//   local members = redis.call('set', KEYS[1], ARGV[1])
+//   redis.call('KEYS','*')
 
-  -- redis.call('flushall')
-  return members
-`;
+//   -- redis.call('flushall')
+//   return members
+// `;
   
-  export default {
-    upload: (_redis: IORedis.Redis) => {
-      redis = _redis;
-      redis.defineCommand(commandName, { lua });
-    },
+//   export default {
+//     upload: (_redis: IORedis.Redis) => {
+//       redis = _redis;
+//       redis.defineCommand(commandName, { lua });
+//     },
   
-    run: async (key: string, member: string, seconds: number) => {
-      const luaParams = new LuaParams();
-      luaParams.add({
-        key,
-        argv: member,
-      });
-      luaParams.add({
-        key: 'ex',
-        argv: seconds.toString(),
-      });
+//     run: async (key: string, member: string, seconds: number) => {
+//       const luaParams = new LuaParams();
+//       luaParams.add({
+//         key,
+//         argv: member,
+//       });
+//       luaParams.add({
+//         key: 'ex',
+//         argv: seconds.toString(),
+//       });
   
-      const result = await (redis as any)[commandName](
-        luaParams.argvCount(),
-        luaParams.argvList(),
-        (err: any) => {
-          if (err) console.log(`lua script error: ${commandName}`, err);
-        },
-      );
-      return result;
-    },
-  };
+//       const result = await (redis as any)[commandName](
+//         luaParams.argvCount(),
+//         luaParams.argvList(),
+//         (err: any) => {
+//           if (err) console.log(`lua script error: ${commandName}`, err);
+//         },
+//       );
+//       return result;
+//     },
+//   };
   
 
 //   const redis = new IORedis();

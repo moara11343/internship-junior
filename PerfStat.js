@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Perf = exports.perfReport = exports.getPerfStat = exports.clearPerfReport = exports.perfReportUpload = void 0;
-const LuaParams_1 = require("../redis-graph/LuaParams");
+const LuaParams_1 = require("./LuaParams");
 let redis;
 const commandName = 'reportPerfStat';
 const lua = `  
