@@ -1,6 +1,6 @@
 import IORedis from "ioredis";
 import LuaParams from "./LuaParams";
-import 'core-js/es/object/from-entries';
+// import 'core-js/es/object/from-entries';
 
 // import loadmpoint, * from '../redis-graph/loadmpoint';
 
@@ -75,9 +75,9 @@ async function main() {
   for i=1,#data,2 do
     x = data[i]
     y = data[i+1]
-    if (typeof y === "number") || (typeof x === "number"){
-      redis.call('keys', '*' )
-    }
+ --   if (typeof y === "number") || (typeof x === "number"){
+ --     redis.call('keys', '*' )
+ --   }
     local a = x + y
     redis.call('set', 'answer', '1')
     redis.call('set', 'i', 'sud')
